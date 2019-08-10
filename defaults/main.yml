@@ -1,0 +1,24 @@
+---
+base_packages:
+  - atop
+  - carton
+  - clusterssh
+  - cpanminus
+  - dnsutils
+  - docker.io
+  - emacs
+  - htop
+  - libvirt-daemon
+  - neomutt
+  - neovim
+  - nmap
+  - perl
+  - snapd
+  - virt-manager
+  - weechat
+  - zsh
+
+base_services:
+  - libvirtd
+  - docker
+  - snapd

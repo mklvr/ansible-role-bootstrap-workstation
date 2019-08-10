@@ -1,0 +1,17 @@
+---
+- name: Get everything up to date
+  apt: name=* state=latest update_cache=True
+
+- name: Install desired packages
+  apt: name="{{ base_packages }}" state=present
+
+- name: enable some of the installed services
+  service: name="{{ item }}" state=started enabled=True
+  with_items: "{{ base_services }}"
+
+- name: Add the user to groups for services
+  user:
+    name: "{{ lookup('ENV', 'USER') }}"
+    shell: /bin/zsh
+    groups: docker,libvirt
+    append: True
