@@ -1,19 +1,28 @@
 ---
 base_packages:
   - atop
+  - apt-transport-https
+  - build-essential
   - carton
   - clusterssh
   - cpanminus
   - dnsutils
   - docker.io
   - emacs
+  - fonts-firacode
+  - fzf
   - htop
   - libvirt-daemon
   - neomutt
   - neovim
   - nmap
   - perl
+  - python-pip
+  - python-virtualenv
+  - python3-pip
+  - silversearcher-ag
   - snapd
+  - stow
   - virt-manager
   - weechat
   - zsh
@@ -22,3 +31,12 @@ base_services:
   - libvirtd
   - docker
   - snapd
+
+snap_packages:
+  classic: 
+    - datagrip
+    - slack
+  default:
+    - audacity
+
+install_brave: True
