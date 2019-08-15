@@ -20,6 +20,7 @@ base_packages:
   - python-pip
   - python-virtualenv
   - python3-pip
+  - rsync
   - silversearcher-ag
   - snapd
   - stow
@@ -33,7 +34,7 @@ base_services:
   - snapd
 
 snap_packages:
-  classic: 
+  classic:
     - datagrip
     - slack
   default:
