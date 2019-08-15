@@ -22,9 +22,6 @@
 - name: Install some default snaps
   snap: name="{{ snap_packages.default }}" state=present
 
-- include_tasks: brave.yml
-  when: install_brave | bool
-
 - name: Add github to known_hosts
   lineinfile:
     dest: "{{ lookup('env', 'HOME') }}/.ssh/known_hosts"
@@ -33,22 +30,11 @@
     line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
     regexp: "^github\\.com"
 
-- name: Clone the prelude emacs configs
-  become: True
-  become_user: "{{ lookup('env', 'USER') }}"
-  git:
-    repo: "git@github.com:mklvr/prelude.git"
-    dest: "{{ lookup('env', 'HOME') }}/Projects/mklvr/prelude"
-    clone: True
-    update: True
-    force: True
+- include_tasks: brave.yml
+  when: install_brave | bool
 
-- name: Create and .emacs.d directory
-  file:
-    dest: "{{ lookup('env', 'HOME') }}/.emacs.d"
-    state: directory
-    owner: "{{ lookup('env', 'USER') }}"
-    group: "{{ lookup('env', 'USER') }}"
+- include_tasks: zsh.yml
+  when: install_zsh | bool
 
-- name: Stow the emacs configs
-  command: stow -d {{ lookup('env', 'HOME') }}/Projects/mklvr/prelude -t {{ lookup('env', 'HOME') }}/.emacs.d ./
+- include_tasks: emacs.yml
+  when: install_emacs_prelude | bool

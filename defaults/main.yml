@@ -6,6 +6,7 @@ base_packages:
   - carton
   - clusterssh
   - cpanminus
+  - curl
   - dnsutils
   - docker.io
   - emacs
@@ -41,3 +42,5 @@ snap_packages:
     - audacity
 
 install_brave: True
+install_zsh: True
+install_emacs_prelude: True

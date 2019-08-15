@@ -1,0 +1,20 @@
+---
+- name: Clone the prelude emacs configs
+  become: True
+  become_user: "{{ lookup('env', 'USER') }}"
+  git:
+    repo: "git@github.com:mklvr/prelude.git"
+    dest: "{{ lookup('env', 'HOME') }}/Projects/mklvr/prelude"
+    clone: True
+    update: True
+    force: True
+
+- name: Create and .emacs.d directory
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/.emacs.d"
+    state: directory
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+
+- name: Stow the emacs configs
+  command: stow -d {{ lookup('env', 'HOME') }}/Projects/mklvr/prelude -t {{ lookup('env', 'HOME') }}/.emacs.d ./
