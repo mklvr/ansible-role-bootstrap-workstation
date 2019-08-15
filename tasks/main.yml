@@ -5,22 +5,9 @@
 - name: Install desired packages
   apt: name="{{ base_packages }}" state=present
 
-- name: enable some of the installed services
+- name: Enable some of the installed services
   service: name="{{ item }}" state=started enabled=True
   with_items: "{{ base_services }}"
-
-- name: Add the user to groups for services
-  user:
-    name: "{{ lookup('ENV', 'USER') }}"
-    shell: /bin/zsh
-    groups: docker,libvirt
-    append: True
-
-- name: Install some classic snaps
-  snap: name="{{ snap_packages.classic }}" state=present classic=True
-
-- name: Install some default snaps
-  snap: name="{{ snap_packages.default }}" state=present
 
 - name: Add github to known_hosts
   lineinfile:
@@ -30,6 +17,9 @@
     line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
     regexp: "^github\\.com"
 
+- include_tasks: snaps.yml
+  when: install_snaps | bool
+
 - include_tasks: brave.yml
   when: install_brave | bool
 
@@ -38,3 +28,10 @@
 
 - include_tasks: emacs.yml
   when: install_emacs_prelude | bool
+
+- name: Add the user to groups for services
+  user:
+    name: "{{ lookup('ENV', 'USER') }}"
+    shell: /bin/zsh
+    groups: docker,libvirt
+    append: True

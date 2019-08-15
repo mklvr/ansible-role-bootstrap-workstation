@@ -1,0 +1,6 @@
+---
+- name: Install some classic snaps
+  snap: name="{{ snap_packages.classic }}" state=present classic=True
+
+- name: Install some default snaps
+  snap: name="{{ snap_packages.default }}" state=present

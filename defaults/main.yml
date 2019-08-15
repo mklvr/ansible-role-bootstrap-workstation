@@ -42,5 +42,6 @@ snap_packages:
     - audacity
 
 install_brave: True
-install_zsh: True
 install_emacs_prelude: True
+install_snaps: True
+install_zsh: True
