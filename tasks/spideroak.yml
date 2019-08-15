@@ -1,0 +1,16 @@
+---
+- name: Download the latest deb file for spideroak
+  get_url:
+    url: https://spideroak.com/release/spideroak/deb_x64
+    dest: /tmp/spideroak.deb
+    force: True
+
+- name: Install spideroak package
+  apt:
+    deb: //tmp/spideroak.deb
+    state: present
+
+- name: Cleanup spideroak deb
+  file:
+    dest: //tmp/spideroak.deb
+    state: absent

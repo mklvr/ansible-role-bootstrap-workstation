@@ -29,6 +29,12 @@
 - include_tasks: emacs.yml
   when: install_emacs_prelude | bool
 
+- include_tasks: spideroak.yml
+  when: install_spideroak | bool
+
+- include_tasks: terraform.yml
+  when: install_terraform | bool
+
 - name: Add the user to groups for services
   user:
     name: "{{ lookup('ENV', 'USER') }}"

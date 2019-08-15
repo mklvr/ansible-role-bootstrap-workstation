@@ -44,4 +44,6 @@ snap_packages:
 install_brave: True
 install_emacs_prelude: True
 install_snaps: True
+install_spideroak: True
+install_terraform: True
 install_zsh: True

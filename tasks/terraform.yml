@@ -1,0 +1,22 @@
+---
+- name: Ensure the bin directory exists in our users home directory
+  become_user: "{{ lookup('env', 'USER') }}"
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/bin"
+    state: directory
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+    mode: 0755
+
+- name: Download terraform
+  become_user: "{{ lookup('env', 'USER') }}"
+  get_url:
+    url: https://releases.hashicorp.com/terraform/0.12.6/terraform_0.12.6_linux_amd64.zip
+    dest: "{{ lookup('env', 'HOME') }}/bin/terraform.zip"
+
+- name: Decompress the downloaded file
+  become_user: "{{ lookup('env', 'USER') }}"
+  shell: |
+    cd {{ lookup('env', 'HOME') }}/bin
+    unzip terraform.zip
+    rm terraform.zip
