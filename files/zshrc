@@ -2,7 +2,8 @@
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:/opt/chefdk/bin:/opt/inspec/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/moliver/.oh-my-zsh
+export ZSH=/home/$USER/.oh-my-zsh
+
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -60,7 +61,7 @@ plugins=(
   pass
 )
 
-source $ZSH/oh-my-zsh.sh
+[  -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
 
 # Get the FZF key bindings and set the search paths
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
