@@ -60,7 +60,7 @@ plugins=(
   pass
 )
 
-source $ZSH/oh-my-zsh.sh
+[  -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
 
 # Get the FZF key bindings and set the search paths
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
