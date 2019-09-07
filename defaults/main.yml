@@ -14,9 +14,12 @@ base_packages:
   - fzf
   - htop
   - libvirt-daemon
+  - mu4e
   - neomutt
   - neovim
+  - network-manager-openvpn
   - nmap
+  - openvpn
   - perl
   - python-pip
   - python-virtualenv
