@@ -10,13 +10,18 @@ base_packages:
   - dnsutils
   - docker.io
   - emacs
+  - firmware-misc-nonfree
+  - flatpak
   - fonts-firacode
   - fzf
   - htop
+  - inxi
+  - isync
   - libvirt-daemon
   - neomutt
   - neovim
   - nmap
+  - notmuch
   - perl
   - python-pip
   - python-virtualenv
@@ -37,6 +42,8 @@ base_services:
 snap_packages:
   classic:
     - datagrip
+    - gitter-desktop
+    - keepassxc
     - slack
   default:
     - audacity
