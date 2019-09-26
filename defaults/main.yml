@@ -18,10 +18,13 @@ base_packages:
   - inxi
   - isync
   - libvirt-daemon
+  - mu4e
   - neomutt
   - neovim
+  - network-manager-openvpn
   - nmap
   - notmuch
+  - openvpn
   - perl
   - python-pip
   - python-virtualenv
