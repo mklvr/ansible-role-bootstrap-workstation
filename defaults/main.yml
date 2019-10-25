@@ -9,11 +9,8 @@ base_packages:
   - curl
   - dnsutils
   - docker.io
-  - emacs
-  - firmware-misc-nonfree
   - flatpak
   - fonts-firacode
-  - fzf
   - htop
   - inxi
   - isync
@@ -36,6 +33,11 @@ base_packages:
   - virt-manager
   - weechat
   - zsh
+
+debian_specific_packages:
+  - emacs
+  - firmware-misc-nonfree
+  - fzf
 
 base_services:
   - libvirtd
