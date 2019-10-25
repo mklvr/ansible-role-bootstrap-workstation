@@ -7,7 +7,7 @@
 
 - name: Install debian-specific packages (i.e. not ubuntu)
   apt: name="{{ debian_specific_packages }}" state=present
-  when: ansible_disitribution == "Debian"
+  when: ansible_distribution == "Debian"
 
 - name: Enable some of the installed services
   service: name="{{ item }}" state=started enabled=True
@@ -22,7 +22,7 @@
     regexp: "^github\\.com"
 
 - include_tasks: snaps.yml
-  when: install_snaps | bool and ansible_version >= "2.8"
+  when: (install_snaps | bool) and ansible_version == "2.8"
 
 - include_tasks: brave.yml
   when: install_brave | bool
