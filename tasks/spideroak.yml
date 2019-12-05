@@ -1,16 +1,36 @@
 ---
-- name: Download the latest deb file for spideroak
-  get_url:
-    url: https://spideroak.com/release/spideroak/deb_x64
-    dest: /tmp/spideroak.deb
-    force: True
-
-- name: Install spideroak package
-  apt:
-    deb: //tmp/spideroak.deb
-    state: present
-
-- name: Cleanup spideroak deb
-  file:
-    dest: //tmp/spideroak.deb
-    state: absent
+- name: Install spideroak for debian
+  when: ansible_distribution == 'Debian'
+  block:
+    - name: Download the latest deb file for spideroak
+      get_url:
+        url: https://spideroak.com/release/spideroak/deb_x64
+        dest: /tmp/spideroak.deb
+        force: True
+  
+    - name: Install spideroak package
+      apt:
+        deb: //tmp/spideroak.deb
+        state: present
+  
+    - name: Cleanup spideroak deb
+      file:
+        dest: //tmp/spideroak.deb
+        state: absent
+  
+- name: Install spideroak for fedora
+  when: ansible_distribution == 'Fedora'
+  block:
+    - name: Download the latest package for spideroak
+      get_url:
+        url: https://spideroak.com/release/spideroak/rpm_x64
+        dest: /tmp/spideroak.rpm
+        force: True
+  
+    - name: Install spideroak package
+      dnf: name=/tmp/spideroak.rpm state=present
+  
+    - name: Cleanup spideroak package
+      file:
+        dest: /tmp/spideroak.rpm
+        state: absent

@@ -1,5 +1,43 @@
 ---
-base_packages:
+fedora_base_packages:
+  - atop
+  - perl-Carton
+  - clusterssh
+  - perl-App-cpanminus
+  - curl
+  - bind-utils
+  - podman
+  - flatpak
+  - mozilla-fira-mono-fonts
+  - mozilla-fira-sans-fonts
+  - mozilla-fira-fonts-common
+  - htop
+  - inxi
+  - libvirt
+  - neovim
+  - NetworkManager-openvpn
+  - NetworkManager-openvpn-gnome
+  - nmap
+  - openvpn
+  - perl
+  - python3-pip
+  - python3-virtualenv
+  - rsync
+  - the_silver_searcher
+  - snapd
+  - stow
+  - virt-manager
+  - weechat
+  - zsh
+  - gnome-tweaks
+  - emacs
+  - thunderbird
+  - firefox
+  - toolbox
+  - ansible
+  - podman-compose
+
+debian_base_packages:
   - atop
   - apt-transport-https
   - build-essential
@@ -41,8 +79,10 @@ debian_specific_packages:
 
 base_services:
   - libvirtd
-  - docker
   - snapd
+
+debian_services:
+  - docker
 
 snap_packages:
   classic:

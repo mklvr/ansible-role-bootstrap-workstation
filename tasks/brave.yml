@@ -1,20 +1,37 @@
 ---
-- name: Add the key for brave
-  apt_key:
-    url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
-    state: present
-
-- name: Add the repo for brave
-  apt_repository:
-    repo: deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ trusty main
-    state: present
-
-- name: Install the brave browser
-  apt: name=brave-browser state=present update_cache=True
-
-- name: Enable user namespace for brave
-  sysctl:
-    name: kernel.unprivileged_userns_clone
-    value: "1"
-    state: present
-    sysctl_set: True
+- name: Install the brave browser for debian
+  when: ansible_distribution == 'Debian'
+  block:
+    - name: Add the key for brave
+      apt_key:
+        url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+        state: present
+  
+    - name: Add the repo for brave
+      apt_repository:
+        repo: deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ trusty main
+        state: present
+  
+    - name: Install the brave browser
+      apt: name=brave-browser state=present update_cache=True
+  
+    - name: Enable user namespace for brave
+      sysctl:
+        name: kernel.unprivileged_userns_clone
+        value: "1"
+        state: present
+        sysctl_set: True
+  
+- name: Install the brave browser for fedora
+  when: ansible_distribution == 'Fedora'
+  block:
+    - name: Add repository from brave browser
+      yum_repository:
+        name: brave
+        description: Repository for the brave web browser
+        baseurl: https://brave-browser-rpm-release.s3.brave.com/x86_64/
+        gpgkey: https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+        gpgcheck: True
+  
+    - name: Install the brave web browser
+      dnf: name=brave-browser state=present

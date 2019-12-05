@@ -1,0 +1,36 @@
+---
+- name: Get everything up to date
+  dnf: name=* state=latest update_cache=True
+
+- name: Install desired packages
+  dnf: name="{{ fedora_base_packages }}" state=present
+
+- name: Enable some of the installed services
+  service: name="{{ item }}" state=started enabled=True
+  with_items: "{{ base_services }}"
+
+- name: Add github to known_hosts
+  lineinfile:
+    dest: "{{ lookup('env', 'HOME') }}/.ssh/known_hosts"
+    create: yes
+    state: present
+    line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
+    regexp: "^github\\.com"
+
+- include_tasks: snaps.yml
+  when: (install_snaps | bool) and ansible_version == "2.8"
+
+- include_tasks: brave.yml
+  when: install_brave | bool
+
+- include_tasks: zsh.yml
+  when: install_zsh | bool
+
+- include_tasks: emacs.yml
+  when: install_emacs_prelude | bool
+
+- include_tasks: spideroak.yml
+  when: install_spideroak | bool
+
+- include_tasks: terraform.yml
+  when: install_terraform | bool
