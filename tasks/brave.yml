@@ -1,6 +1,6 @@
 ---
 - name: Install the brave browser for debian
-  when: ansible_distribution == 'Debian'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   block:
     - name: Add the key for brave
       apt_key:

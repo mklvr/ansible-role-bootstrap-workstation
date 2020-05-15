@@ -72,9 +72,45 @@ debian_base_packages:
   - weechat
   - zsh
 
+ubuntu_base_packages:
+  - atop
+  - apt-transport-https
+  - build-essential
+  - carton
+  - clusterssh
+  - cpanminus
+  - curl
+  - dnsutils
+  - docker.io
+  - flatpak
+  - fonts-firacode
+  - htop
+  - inxi
+  - isync
+  - libvirt-daemon
+  - mu4e
+  - neomutt
+  - neovim
+  - network-manager-openvpn
+  - nmap
+  - notmuch
+  - openvpn
+  - perl
+  - rsync
+  - silversearcher-ag
+  - snapd
+  - stow
+  - virt-manager
+  - weechat
+  - zsh
+
 debian_specific_packages:
   - emacs
   - firmware-misc-nonfree
+  - fzf
+
+ubuntu_specific_packages:
+  - emacs
   - fzf
 
 base_services:

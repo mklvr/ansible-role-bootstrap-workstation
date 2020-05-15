@@ -4,3 +4,6 @@
 
 - include_tasks: debian.yml
   when: ansible_distribution == 'Debian'
+
+- include_tasks: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
