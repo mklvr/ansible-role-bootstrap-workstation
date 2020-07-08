@@ -1,4 +1,34 @@
 ---
+opensuse_base_packages:
+  - atop
+  - perl-Carton
+  - clusterssh
+  - perl-App-cpanminus
+  - curl
+  - bind-utils
+  - podman
+  - flatpak
+  - htop
+  - inxi
+  - libvirt
+  - neovim
+  - NetworkManager-openvpn
+  - nmap
+  - openvpn
+  - perl
+  - python3-pip
+  - python3-virtualenv
+  - rsync
+  - the_silver_searcher
+  - stow
+  - virt-manager
+  - weechat
+  - zsh
+  - emacs
+  - thunderbird
+  - firefox
+  - ansible
+
 fedora_base_packages:
   - atop
   - perl-Carton
@@ -115,7 +145,6 @@ ubuntu_specific_packages:
 
 base_services:
   - libvirtd
-  - snapd
 
 debian_services:
   - docker

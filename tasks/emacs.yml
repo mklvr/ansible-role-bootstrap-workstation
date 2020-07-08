@@ -15,6 +15,15 @@
     state: directory
     owner: "{{ lookup('env', 'USER') }}"
     group: "{{ lookup('env', 'USER') }}"
+  when: ansible_distribution != "openSUSE Leap"
+
+- name: Create and .emacs.d directory
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/.emacs.d"
+    state: directory
+    owner: "{{ lookup('env', 'USER') }}"
+    group: users
+  when: ansible_distribution == "openSUSE Leap"
 
 - name: Stow the emacs configs
   command: stow -d {{ lookup('env', 'HOME') }}/Projects/mklvr/prelude -t {{ lookup('env', 'HOME') }}/.emacs.d ./

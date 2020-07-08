@@ -2,6 +2,9 @@
 - include_tasks: fedora.yml
   when: ansible_distribution == 'Fedora'
 
+- include_tasks: opensuse.yml
+  when: ansible_distribution == "openSUSE Leap"
+
 - include_tasks: debian.yml
   when: ansible_distribution == 'Debian'
 

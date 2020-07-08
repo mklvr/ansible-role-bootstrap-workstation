@@ -7,6 +7,17 @@
     owner: "{{ lookup('env', 'USER') }}"
     group: "{{ lookup('env', 'USER') }}"
     mode: 0755
+  when: ansible_distribution != "openSUSE Leap"
+
+- name: Ensure the bin directory exists in our users home directory
+  become_user: "{{ lookup('env', 'USER') }}"
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/bin"
+    state: directory
+    owner: "{{ lookup('env', 'USER') }}"
+    group: users
+    mode: 0755
+  when: ansible_distribution == "openSUSE Leap"
 
 - name: Download terraform
   become_user: "{{ lookup('env', 'USER') }}"

@@ -35,3 +35,20 @@
   
     - name: Install the brave web browser
       dnf: name=brave-browser state=present
+
+- name: Install the brave browser for opensuse
+  when: ansible_distribution == "openSUSE Leap"
+  block:
+    - name:  Add brave repo key
+      rpm_key:
+        state: present
+        key: https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+
+    - name: Add repository from brave browser
+      zypper_repository:
+        name: brave
+        state: present
+        repo: 'https://brave-browser-rpm-release.s3.brave.com/x86_64/'
+  
+    - name: Install the brave web browser
+      zypper: name=brave-browser state=present
