@@ -8,6 +8,8 @@ opensuse_base_packages:
   - bind-utils
   - podman
   - flatpak
+  - fzf
+  - git
   - htop
   - inxi
   - libvirt

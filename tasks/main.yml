@@ -3,7 +3,7 @@
   when: ansible_distribution == 'Fedora'
 
 - include_tasks: opensuse.yml
-  when: ansible_distribution == "openSUSE Leap"
+  when: ansible_distribution == "openSUSE Leap" or ansible_distribution == "openSUSE Tumbleweed"
 
 - include_tasks: debian.yml
   when: ansible_distribution == 'Debian'

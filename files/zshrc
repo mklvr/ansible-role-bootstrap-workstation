@@ -55,7 +55,7 @@ plugins=(
   git
   sudo
   docker
-  go
+  golang
   yum
   pass
 )

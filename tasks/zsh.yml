@@ -16,7 +16,7 @@
     owner: "{{ lookup('env', 'USER') }}"
     group: "{{ lookup('env', 'USER') }}"
     mode: 0644
-  when: ansible_distribution != "openSUSE Leap"
+  when: ansible_distribution != "openSUSE Leap" or ansible_distribution != "openSUSE Tumbleweed"
 
 - name: Copy out zshrc file to our user.
   copy:

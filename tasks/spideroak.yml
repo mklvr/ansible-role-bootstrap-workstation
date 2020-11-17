@@ -28,7 +28,7 @@
         force: True
   
     - name: Install spideroak package
-      dnf: name=/tmp/spideroak.rpm state=present
+      dnf: name=/tmp/spideroak.rpm state=present disable_gpg_check=True
   
     - name: Cleanup spideroak package
       file:
