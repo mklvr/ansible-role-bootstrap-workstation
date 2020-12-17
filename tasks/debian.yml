@@ -1,4 +1,8 @@
 ---
+- name: Make sure we have aptitude installed
+  command: apt install aptitude -y
+  changed_when: False
+
 - name: Get everything up to date
   apt: name=* state=latest update_cache=True
 
@@ -45,3 +49,9 @@
     shell: /bin/zsh
     groups: docker,libvirt
     append: True
+
+- name: Allow users to run 'dmesg'
+  sysctl:
+    name: kernel.dmesg_restrict
+    value: '0'
+    state: present
