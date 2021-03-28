@@ -1,0 +1,34 @@
+---
+- name: Ensure the bin directory exists in our users home directory
+  become_user: "{{ lookup('env', 'USER') }}"
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/bin"
+    state: directory
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+    mode: 0755
+  when: ansible_distribution != "openSUSE Leap"
+
+- name: Ensure the bin directory exists in our users home directory
+  become_user: "{{ lookup('env', 'USER') }}"
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/bin"
+    state: directory
+    owner: "{{ lookup('env', 'USER') }}"
+    group: users
+    mode: 0755
+  when: ansible_distribution == "openSUSE Leap"
+
+- name: Download stern
+  become_user: "{{ lookup('env', 'USER') }}"
+  get_url:
+    url: https://github.com/wercker/stern/releases/download/{{ stern_version }}/stern_linux_amd64
+    dest: "{{ lookup('env', 'HOME') }}/bin/stern"
+
+- name: Decompress the downloaded file
+  become_user: "{{ lookup('env', 'USER') }}"
+  file:
+    path: "{{ lookup('env', 'HOME') }}/bin/stern"
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+    mode: 0750

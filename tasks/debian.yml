@@ -46,6 +46,9 @@
 - include_tasks: terraform.yml
   when: install_terraform | bool
 
+- include_tasks: stern.yml
+  when: install_stern | bool 
+
 - name: Add the user to groups for services
   user:
     name: "{{ lookup('ENV', 'USER') }}"
