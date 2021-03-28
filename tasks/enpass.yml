@@ -1,0 +1,16 @@
+---
+- name: Install the enpass password manager for debian
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  block:
+    - name: Add the key for enpass
+      apt_key:
+        url: https://apt.enpass.io/keys/enpass-linux.key
+        state: present
+  
+    - name: Add the repo for enpass
+      apt_repository:
+        repo: deb [arch=amd64] https://apt.enpass.io/ stable main
+        state: present
+  
+    - name: Install the enpass browser
+      apt: name=enpass state=present update_cache=True
