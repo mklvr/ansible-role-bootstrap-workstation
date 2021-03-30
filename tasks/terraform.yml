@@ -27,7 +27,12 @@
 
 - name: Decompress the downloaded file
   become_user: "{{ lookup('env', 'USER') }}"
-  shell: |
-    cd {{ lookup('env', 'HOME') }}/bin
-    unzip terraform.zip
-    rm terraform.zip
+  ansible.builtin.unarchive:
+    src: "{{ lookup('env', 'HOME') }}/bin/terraform.zip"
+    dest: "{{ lookup('env', 'HOME') }}/bin"
+    remote_src: True
+
+- name: Remove the terraform zip filemode
+  ansible.builtin.file:
+    name: "{{ lookup('env', 'HOME') }}/bin/terraform.zip"
+    state: absent
