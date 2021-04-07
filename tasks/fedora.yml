@@ -34,3 +34,6 @@
 
 - include_tasks: terraform.yml
   when: install_terraform | bool
+
+- include_tasks: enpass.yml
+  when: install_enpass | bool

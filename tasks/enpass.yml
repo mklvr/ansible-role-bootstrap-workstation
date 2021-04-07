@@ -14,3 +14,19 @@
 
     - name: Install the enpass password manager
       apt: name=enpass state=present update_cache=True
+
+- name: Install the enpass password manager for fedora
+  when: ansible_distribution == 'Fedora'
+  block:
+    - name: Add the yum repo for enpass
+      ansible.builtin.yum_repository: 
+        name: enpass
+        description: Repository for enpass password manager
+        baseurl: https://yum.enpass.io/stable/$basearch/
+        gpgcheck: 1
+        gpgkey: https://yum.enpass.io/RPM-GPG-KEY-enpass-signing-key
+        enabled: 1
+
+    - name: Install the enpass password manager
+      ansible.builtin.dnf: name=enpass state=present update_cache=True
+
