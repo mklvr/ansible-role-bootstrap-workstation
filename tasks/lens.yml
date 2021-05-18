@@ -1,0 +1,5 @@
+---
+- name: Install Kontena Lens
+  dnf:
+    name: "https://github.com/lensapp/lens/releases/download/v{{ lens_version }}/Lens-{{ lens_version }}.x86_64.rpm"
+    state: present

@@ -1,0 +1,24 @@
+---
+- name: Install gcloud for fedora
+  when: ansible_distribution == 'Fedora'
+  block:
+    - name: Add the repo for gcloud
+      yum_repository:
+        name: gcloud
+        baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64
+        description: repo for gcloud sdk
+        enabled: 1
+        gpgcheck: 1
+        repo_gpgcheck: 0
+        gpgkey:
+          - https://packages.cloud.google.com/yum/doc/yum-key.gpg
+          - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+
+    - name: Install gcloud package
+      dnf:
+        name:
+          - google-cloud-sdk
+          - kubectl
+        update_cache: True
+        state: present
+        disable_gpg_check: False

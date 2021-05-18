@@ -37,3 +37,9 @@
 
 - include_tasks: enpass.yml
   when: install_enpass | bool
+
+- include_tasks: gcloud.yml
+  when: install_gcloud | bool
+
+- include_tasks: lens.yml
+  when: install_lens | bool

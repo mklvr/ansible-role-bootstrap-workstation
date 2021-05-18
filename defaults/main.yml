@@ -168,6 +168,9 @@ install_enpass: True
 install_terraform: True
 install_stern: True
 install_zsh: True
+install_gcloud: True
+install_lens: True
 
 stern_version: 1.1.0
 terraform_version: 0.14.9
+lens_version: 4.2.4
