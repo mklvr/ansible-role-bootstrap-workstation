@@ -32,42 +32,60 @@ opensuse_base_packages:
   - ansible
 
 fedora_base_packages:
+  - ansible
   - atop
-  - perl-Carton
-  - clusterssh
-  - perl-App-cpanminus
-  - curl
   - bind-utils
-  - podman
+  - clusterssh
+  - curl
+  - emacs
+  - firefox
   - flatpak
-  - mozilla-fira-mono-fonts
-  - mozilla-fira-sans-fonts
-  - mozilla-fira-fonts-common
+  - freetype.i686
+  - gnome-tweaks
+  - gnutls-devel
+  - gnutls-devel.i686
+  - gnutls.i686
   - htop
   - inxi
+  - libgpg-error.i686
   - libvirt
+  - lutris
+  - mozilla-fira-fonts-common
+  - mozilla-fira-mono-fonts
+  - mozilla-fira-sans-fonts
   - neovim
   - NetworkManager-openvpn
   - NetworkManager-openvpn-gnome
   - nmap
+  - openldap-devel
+  - openldap-devel.i686
+  - openldap.i686
   - openvpn
   - perl
+  - perl-App-cpanminus
+  - perl-Carton
+  - podman
+  - podman-compose
   - python3-pip
   - python3-virtualenv
+  - ripgrep
   - rsync
-  - the_silver_searcher
   - snapd
+  - sqlite2.i686
+  - sqlite2.x86_64
   - stow
-  - virt-manager
-  - weechat
-  - zsh
-  - gnome-tweaks
-  - emacs
+  - subnetcalc
+  - the_silver_searcher
   - thunderbird
-  - firefox
   - toolbox
-  - ansible
-  - podman-compose
+  - virt-manager
+  - vulkan-loader.i686
+  - weechat
+  - wine
+  - wine-dxvk
+  - wine-dxvk.i686
+  - wine.i686
+  - zsh
 
 debian_base_packages:
   - atop
@@ -170,7 +188,6 @@ install_stern: True
 install_zsh: True
 install_gcloud: True
 install_lens: True
-
 stern_version: 1.1.0
 terraform_version: 0.14.9
-lens_version: 4.2.4
+lens_version: 4.2.5
