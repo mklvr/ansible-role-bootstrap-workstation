@@ -36,6 +36,7 @@ fedora_base_packages:
   - atop
   - bind-utils
   - clusterssh
+  - cmake
   - curl
   - emacs
   - firefox
@@ -48,7 +49,10 @@ fedora_base_packages:
   - htop
   - inxi
   - libgpg-error.i686
+  - libtool
   - libvirt
+  - libvterm
+  - libvterm-devel
   - lutris
   - mozilla-fira-fonts-common
   - mozilla-fira-mono-fonts
