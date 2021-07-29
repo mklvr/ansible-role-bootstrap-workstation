@@ -38,6 +38,7 @@ fedora_base_packages:
   - clusterssh
   - cmake
   - curl
+  - duplicity
   - emacs
   - firefox
   - flatpak
@@ -70,6 +71,7 @@ fedora_base_packages:
   - perl-Carton
   - podman
   - podman-compose
+  - python3-b2sdk
   - python3-pip
   - python3-virtualenv
   - ripgrep
