@@ -115,8 +115,7 @@ debian_base_packages:
   - notmuch
   - openvpn
   - perl
-  - python-pip
-  - python-virtualenv
+  - python3-virtualenv
   - python3-pip
   - rsync
   - silversearcher-ag
