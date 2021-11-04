@@ -47,6 +47,7 @@ fedora_base_packages:
   - gnutls-devel
   - gnutls-devel.i686
   - gnutls.i686
+  - gpgme-devel
   - htop
   - inxi
   - libgpg-error.i686
@@ -72,6 +73,7 @@ fedora_base_packages:
   - podman
   - podman-compose
   - python3-b2sdk
+  - python3-devel
   - python3-pip
   - python3-virtualenv
   - ripgrep
@@ -81,6 +83,7 @@ fedora_base_packages:
   - sqlite2.x86_64
   - stow
   - subnetcalc
+  - swig
   - the_silver_searcher
   - thunderbird
   - toolbox
@@ -98,6 +101,7 @@ debian_base_packages:
   - apt-transport-https
   - build-essential
   - carton
+  - cmake
   - clusterssh
   - cpanminus
   - curl
@@ -108,7 +112,9 @@ debian_base_packages:
   - htop
   - inxi
   - isync
+  - libtool
   - libvirt-daemon
+  - libvterm-dev
   - mu4e
   - neomutt
   - neovim
@@ -117,8 +123,7 @@ debian_base_packages:
   - notmuch
   - openvpn
   - perl
-  - python-pip
-  - python-virtualenv
+  - python3-virtualenv
   - python3-pip
   - rsync
   - silversearcher-ag

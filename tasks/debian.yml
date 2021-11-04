@@ -51,7 +51,7 @@
 
 - name: Add the user to groups for services
   user:
-    name: "{{ lookup('ENV', 'USER') }}"
+    name: "{{ lookup('env', 'USER') }}"
     shell: /bin/zsh
     groups: docker,libvirt
     append: True

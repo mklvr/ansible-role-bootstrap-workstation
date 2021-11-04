@@ -9,4 +9,4 @@
   when: ansible_distribution == 'Debian'
 
 - include_tasks: ubuntu.yml
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Pop!_OS'
