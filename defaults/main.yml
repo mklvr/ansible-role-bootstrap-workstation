@@ -166,9 +166,12 @@ ubuntu_base_packages:
   - zsh
 
 debian_specific_packages:
+  - build-essential
+  - cmake
   - emacs
-  - firmware-misc-nonfree
+  #- firmware-misc-nonfree
   - fzf
+  - libvterm-dev
 
 ubuntu_specific_packages:
   - emacs
@@ -183,11 +186,10 @@ debian_services:
 snap_packages:
   classic:
     - datagrip
-    - gitter-desktop
-    - keepassxc
     - slack
   default:
     - audacity
+    - brave
 
 install_brave: True
 install_emacs_prelude: True
