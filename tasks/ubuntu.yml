@@ -22,7 +22,7 @@
     regexp: "^github\\.com"
 
 - include_tasks: snaps.yml
-  when: (install_snaps | bool) and ansible_version == "2.8"
+  when: (install_snaps | bool)
 
 - include_tasks: brave.yml
   when: install_brave | bool
