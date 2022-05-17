@@ -115,6 +115,7 @@ debian_base_packages:
   - libtool
   - libvirt-daemon
   - libvterm-dev
+  - markdown
   - mu4e
   - neomutt
   - neovim
@@ -149,6 +150,7 @@ ubuntu_base_packages:
   - inxi
   - isync
   - libvirt-daemon
+  - markdown
   - mu4e
   - neomutt
   - neovim
@@ -186,8 +188,8 @@ debian_services:
 snap_packages:
   classic:
     - datagrip
-    - slack
   default:
+    - slack
     - audacity
     - brave
 

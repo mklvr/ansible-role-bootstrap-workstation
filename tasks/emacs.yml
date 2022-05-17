@@ -27,3 +27,34 @@
 
 - name: Stow the emacs configs
   command: stow -d {{ lookup('env', 'HOME') }}/Projects/mklvr/prelude -t {{ lookup('env', 'HOME') }}/.emacs.d ./
+
+- name: Make sure our user systemd directory exists
+  file:
+    dest: "{{ lookup('env', 'HOME') }}/.config/systemd"
+    state: directory
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+  when: ansible_distribution != "openSUSE Leap"
+
+- name: Create the user systemd service file
+  copy:
+    source: emacs.service
+    dest: "{{ lookup('env', 'HOME' }}/.config/systemd/emacs.service"
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+  when: ansible_distribution != "openSUSE Leap"
+
+- name: Enable the emacs service
+  systemd:
+    name: emacs
+    state: started
+    enabled: True
+    scope: user
+
+- name: Create a new application object for emacsclient
+  copy:
+    source: emacsclient.desktop
+    dest: "{{ lookup('env', 'HOME' }}/.local/share/applications/emacsclient.desktop"
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+  when: ansible_distribution != "openSUSE Leap"
