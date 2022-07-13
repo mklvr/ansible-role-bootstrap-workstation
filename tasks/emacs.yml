@@ -38,13 +38,14 @@
 
 - name: Create the user systemd service file
   copy:
-    source: emacs.service
-    dest: "{{ lookup('env', 'HOME' }}/.config/systemd/emacs.service"
+    src: emacs.service
+    dest: "{{ lookup('env', 'HOME') }}/.config/systemd/emacs.service"
     owner: "{{ lookup('env', 'USER') }}"
     group: "{{ lookup('env', 'USER') }}"
   when: ansible_distribution != "openSUSE Leap"
 
 - name: Enable the emacs service
+  become: no
   systemd:
     name: emacs
     state: started
@@ -53,8 +54,8 @@
 
 - name: Create a new application object for emacsclient
   copy:
-    source: emacsclient.desktop
-    dest: "{{ lookup('env', 'HOME' }}/.local/share/applications/emacsclient.desktop"
+    src: emacsclient.desktop
+    dest: "{{ lookup('env', 'HOME') }}/.local/share/applications/emacsclient.desktop"
     owner: "{{ lookup('env', 'USER') }}"
     group: "{{ lookup('env', 'USER') }}"
   when: ansible_distribution != "openSUSE Leap"
