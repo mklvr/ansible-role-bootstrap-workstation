@@ -55,6 +55,7 @@
     shell: /bin/zsh
     groups: docker,libvirt
     append: True
+  when: install_docker and install_libvirt
 
 - name: Allow users to run 'dmesg'
   sysctl:

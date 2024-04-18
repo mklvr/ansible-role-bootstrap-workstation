@@ -52,6 +52,13 @@
     enabled: True
     scope: user
 
+- name: Make sure we have the directory for the desktop file
+  file:
+    state: directory
+    name: "{{ lookup('env', 'HOME') }}/.local/share/applications"
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+ 
 - name: Create a new application object for emacsclient
   copy:
     src: emacsclient.desktop
