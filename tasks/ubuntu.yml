@@ -49,5 +49,5 @@
   user:
     name: "{{ lookup('env', 'USER') }}"
     shell: /bin/zsh
-    groups: docker,libvirt
+    groups: docker
     append: True

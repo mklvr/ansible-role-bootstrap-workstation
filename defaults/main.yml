@@ -134,30 +134,27 @@ ubuntu_base_packages:
   - build-essential
   - carton
   - clusterssh
+  - cmake
   - cpanminus
   - curl
   - dnsutils
   - docker.io
-  - flatpak
   - fonts-firacode
   - htop
   - inxi
-  - isync
-  - libvirt-daemon
+  - libvterm0
+  - libterm-dev
   - markdown
-  - mu4e
-  - neomutt
-  - neovim
   - network-manager-openvpn
   - nmap
-  - notmuch
+  - nodejs
+  - npm
   - openvpn
   - perl
   - rsync
   - silversearcher-ag
   - snapd
   - stow
-  - virt-manager
   - weechat
   - zsh
 
@@ -195,7 +192,7 @@ install_libvirt: False
 install_terraform: False
 install_stern: False
 install_zsh: True
-install_gcloud: True
+install_gcloud: False
 install_lens: False
 stern_version: 1.11.0
 terraform_version: 0.14.9
