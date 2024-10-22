@@ -179,11 +179,11 @@ debian_services: []
 
 snap_packages:
   classic:
-    - datagrip
     - google-cloud-cli
     - kubectl
   default:
     - audacity
+    - dbeaver-ce
     - hiri
     - nextcloud-desktop-client
     - slack
