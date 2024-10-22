@@ -21,14 +21,21 @@
 
 - name: Download stern
   become_user: "{{ lookup('env', 'USER') }}"
-  get_url:
-    url: https://github.com/wercker/stern/releases/download/{{ stern_version }}/stern_linux_amd64
-    dest: "{{ lookup('env', 'HOME') }}/bin/stern"
+  ansible.builtin.get_url:
+    url: https://github.com/stern/stern/releases/download/v1.31.0/stern_1.31.0_linux_amd64.tar.gz
+    dest: "/tmp/stern.tar.gz"
 
 - name: Decompress the downloaded file
-  become_user: "{{ lookup('env', 'USER') }}"
-  file:
-    path: "{{ lookup('env', 'HOME') }}/bin/stern"
-    owner: "{{ lookup('env', 'USER') }}"
-    group: "{{ lookup('env', 'USER') }}"
-    mode: 0750
+  ansible.builtin.unarchive:
+    src: "/tmp/stern.tar.gz"
+    dest: "/tmp/"
+
+- name: Copy stern to bin
+  ansible.builtin.copy:
+    src: /tmp/stern
+    dest: /usr/local/bin/stern
+    remote_src: true
+    mode: 0755
+    owner: root
+    group: root
+  become: true

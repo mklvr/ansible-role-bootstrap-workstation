@@ -143,7 +143,7 @@ ubuntu_base_packages:
   - htop
   - inxi
   - libvterm0
-  - libterm-dev
+  - libtool
   - markdown
   - network-manager-openvpn
   - nmap
@@ -190,10 +190,10 @@ install_spideroak: False
 install_enpass: False
 install_libvirt: False
 install_terraform: False
-install_stern: False
+install_stern: True
 install_zsh: True
-install_gcloud: False
+install_gcloud: True
 install_lens: False
-stern_version: 1.11.0
+stern_version: 1.31.0
 terraform_version: 0.14.9
 lens_version: 4.2.5

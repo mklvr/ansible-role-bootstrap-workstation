@@ -1,13 +1,16 @@
 ---
 - name: Get everything up to date
   apt: name=* state=latest update_cache=True
+  become: true
 
 - name: Install desired packages
   apt: name="{{ ubuntu_base_packages }}" state=present
+  become: true
 
 - name: Install ubuntu-specific packages (i.e. not debian)
   apt: name="{{ ubuntu_specific_packages }}" state=present
   when: ansible_distribution == "Ubuntu"
+  become: true
 
 - name: Enable some of the installed services
   service: name="{{ item }}" state=started enabled=True
@@ -51,3 +54,4 @@
     shell: /bin/zsh
     groups: docker
     append: True
+  become: true
