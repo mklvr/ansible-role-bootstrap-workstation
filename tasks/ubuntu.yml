@@ -27,20 +27,11 @@
 - include_tasks: snaps.yml
   when: (install_snaps | bool)
 
-- include_tasks: brave.yml
-  when: install_brave | bool
-
 - include_tasks: zsh.yml
   when: install_zsh | bool
 
 - include_tasks: emacs.yml
   when: install_emacs_prelude | bool
-
-- include_tasks: spideroak.yml
-  when: install_spideroak | bool
-
-- include_tasks: enpass.yml
-  when: install_enpass | bool
 
 - include_tasks: terraform.yml
   when: install_terraform | bool

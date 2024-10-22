@@ -1,6 +1,8 @@
 ---
 - name: Install some classic snaps
-  snap: name="{{ snap_packages.classic }}" state=present classic=True
+  snap: name="{{ snap_packages.classic }}" state=present classic=True channel=stable
+  become: True
 
 - name: Install some default snaps
-  snap: name="{{ snap_packages.default }}" state=present
+  snap: name="{{ snap_packages.default }}" state=present channel=stable
+  become: True

@@ -140,9 +140,11 @@ ubuntu_base_packages:
   - dnsutils
   - docker.io
   - fonts-firacode
+  - gnome-tweaks
   - htop
   - inxi
   - libvterm0
+  - libvterm-dev
   - libtool
   - markdown
   - network-manager-openvpn
@@ -151,6 +153,7 @@ ubuntu_base_packages:
   - npm
   - openvpn
   - perl
+  - ripgrep
   - rsync
   - silversearcher-ag
   - snapd
@@ -177,15 +180,21 @@ debian_services: []
 snap_packages:
   classic:
     - datagrip
+    - google-cloud-cli
+    - kubectl
   default:
-    - slack
     - audacity
-    - brave
+    - hiri
+    - nextcloud-desktop-client
+    - slack
+    - spotify
+    - thunderbird
+    - vlc
 
 install_brave: False
 install_docker: False
 install_emacs_prelude: True
-install_snaps: False
+install_snaps: True
 install_spideroak: False
 install_enpass: False
 install_libvirt: False

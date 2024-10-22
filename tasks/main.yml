@@ -10,3 +10,10 @@
 
 - include_tasks: ubuntu.yml
   when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Pop!_OS'
+- name: Allow regular users to run dmesg
+  ansible.builtin.sysctl:
+    name: kernel.dmesg_restrict
+    value: 0
+    state: present
+    reload: yes
+  become: True
