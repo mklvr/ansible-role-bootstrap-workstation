@@ -102,7 +102,6 @@ debian_base_packages:
   - build-essential
   - carton
   - cmake
-  - clusterssh
   - cpanminus
   - curl
   - dnsutils
@@ -117,6 +116,8 @@ debian_base_packages:
   - mu4e
   - neomutt
   - neovim
+  - nodejs
+  - npm
   - nmap
   - openvpn
   - perl
